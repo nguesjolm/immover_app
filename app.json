@@ -6,10 +6,13 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "notification": {
+      "icon": "./assets/immover/immover.png"
+    },
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#fefefe"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -24,10 +27,24 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.mpyatech.immover"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/immover/immover.png",
+          "color": "#fefefe",
+          "sounds": [
+            "./assets/immover/immover_1.wav"
+          ],
+          "mode": "production"
+        }
+      ]
+    ]
   }
 }
