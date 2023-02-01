@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "app-test1",
-    "slug": "app-test1",
-    "version": "1.0.0",
+    "name": "ImmOver",
+    "slug": "ImmOver",
+    "version": "1.1.3",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -21,14 +21,17 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mpyatech.immover",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.mpyatech.immover"
+      "package": "com.mpyatech.immover",
+      "versionCode": 6
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -44,7 +47,18 @@
           ],
           "mode": "production"
         }
+      ],
+      [
+        "onesignal-expo-plugin",
+        {
+          "mode": "production"
+        }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "73e5dcda-d118-4e14-acc8-1fd9eaffde90"
+      }
+    }
   }
 }

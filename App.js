@@ -1,10 +1,11 @@
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
+import OneSignal from 'react-native-onesignal';
 import { useState, useEffect, useRef } from 'react';
-import { StyleSheet,Text, View,Platform } from 'react-native';
+import { StyleSheet,Text, View,Platform,StatusBar} from 'react-native';
 import * as React from 'react';
 import { WebView } from 'react-native-webview';
-import { StatusBar } from 'expo-status-bar';
+// import { StatusBar } from 'expo-status-bar';
 import { sendtoken } from './app/ApiLaravel';
 
 Notifications.setNotificationHandler({
@@ -22,6 +23,9 @@ export default function App() {
   const responseListener = useRef();
 
   useEffect(() => {
+    
+    OneSignal.setAppId("4aa2156e-9ef8-4b24-8759-d2b97e536a0a");
+
     registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
 
     notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
@@ -43,10 +47,14 @@ export default function App() {
     return (
       <View style={styles.container}>
 
-        <View style={styles.topBar}>
-					<Text style={{color:'white',fontSize:20,marginLeft:10,marginTop:40,fontWeight:"bold"}}>ImmOver</Text>
-				</View>
+        <StatusBar
+          backgroundColor="#f4390f"
+        />
 
+        <View style={styles.topBar}>
+					<Text style={{color:'white',fontSize:20,marginLeft:10,marginTop:2,fontWeight:"bold"}}>ImmOver</Text>
+				</View>
+         
         <WebView style={styles.webview} source={{uri: notification.notification.request.content.body}}/>
 
       </View>
@@ -55,9 +63,12 @@ export default function App() {
   }else{
     return (
       <View style={styles.container}>
+        <StatusBar
+          backgroundColor="#f4390f"
+        />
       
         <View style={styles.topBar}>
-					<Text style={{color:'white',fontSize:20,marginLeft:10,marginTop:40,fontWeight:"bold"}}>ImmOver</Text>
+					<Text style={{color:'white',fontSize:20,marginLeft:10,marginTop:2,fontWeight:"bold"}}>ImmOver</Text>
 				</View>
         <WebView style={styles.webview}  source={{ uri: 'https://immover.io' }}/>
 
@@ -112,7 +123,7 @@ const styles = StyleSheet.create({
 	},
 
 	topBar: {
-		height: '10%',
+		height: '5%',
 		width: "100%",
 		//justifyContent: "center",
 		//alignItems: "center",
